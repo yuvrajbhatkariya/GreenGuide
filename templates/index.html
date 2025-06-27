@@ -1,0 +1,252 @@
+{% extends 'base.html' %}
+{% block title %}Green Guide - Smart Waste Management{% endblock %}
+{% block content %}
+<!-- Hero Section with Background Image -->
+<div class="hero-section position-relative">
+    <div class="hero-overlay text-white text-center py-5 px-3 px-md-5">
+        <div class="container py-4">
+            <h1 class="display-4 fw-bold mb-3">Welcome to Green Guide</h1>
+            <p class="lead fs-4 mb-4">Empowering sustainable waste management with AI-powered technology</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="{{ url_for('signup') }}" class="btn btn-light btn-lg">Get Started</a>
+                <a href="{{ url_for('guide') }}" class="btn btn-outline-light btn-lg">Learn More</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Value Proposition Section -->
+<div class="container py-5">
+    <div class="row text-center mb-5">
+        <div class="col-md-8 mx-auto">
+            <h2 class="mb-4 text-success">Why Choose Green Guide?</h2>
+            <p class="lead">Our AI-powered platform makes waste identification and proper disposal simple, helping you contribute to a cleaner environment with just a few clicks.</p>
+        </div>
+    </div>
+    
+    <div class="row g-4 mb-5">
+        <div class="col-md-4">
+            <div class="text-center">
+                <div class="feature-icon bg-success bg-opacity-10 p-3 rounded-circle mb-3 mx-auto" style="width: 70px; height: 70px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-camera text-success" viewBox="0 0 16 16">
+                        <path d="M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1v6zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z"/>
+                        <path d="M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"/>
+                    </svg>
+                </div>
+                <h5>Instant Recognition</h5>
+                <p class="text-muted">Our AI instantly identifies waste types with over 95% accuracy</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="text-center">
+                <div class="feature-icon bg-success bg-opacity-10 p-3 rounded-circle mb-3 mx-auto" style="width: 70px; height: 70px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-recycle text-success" viewBox="0 0 16 16">
+                        <path d="M9.302 1.256a1.5 1.5 0 0 0-2.604 0l-1.704 2.98a.5.5 0 0 0 .869.501l1.704-2.98a.5.5 0 0 1 .868 0l1.704 2.98a.5.5 0 1 0 .869-.501l-1.706-2.98zm.229 2.44-1.076 1.88a.5.5 0 1 0 .868.504l1.076-1.88a.5.5 0 1 0-.868-.504zm.229 2.44-1.076 1.88a.5.5 0 1 0 .868.504l1.076-1.88a.5.5 0 1 0-.868-.504zm.229 2.44-1.076 1.88a.5.5 0 1 0 .868.504l1.076-1.88a.5.5 0 1 0-.868-.504zM.002 14.002a.5.5 0 0 1-.985.14l-1-7a.5.5 0 1 1 .985-.14L.002 14.002"/>
+                    </svg>
+                </div>
+                <h5>Personalized Guidance</h5>
+                <p class="text-muted">Receive custom recycling and disposal instructions for your area</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="text-center">
+                <div class="feature-icon bg-success bg-opacity-10 p-3 rounded-circle mb-3 mx-auto" style="width: 70px; height: 70px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-bar-chart text-success" viewBox="0 0 16 16">
+                        <path d="M4 11H2v3h2v-3zm5-4H7v7h2V7zm5-5v12h-2V2h2zm-2-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1h-2zM6 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm-5 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3z"/>
+                    </svg>
+                </div>
+                <h5>Impact Tracking</h5>
+                <p class="text-muted">Track your environmental impact and sustainability progress</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Main Features Section -->
+<div class="bg-light py-5">
+    <div class="container">
+        <h2 class="text-center text-success mb-5">Our Key Features</h2>
+        
+        <div class="row g-4">
+            <!-- Webcam Card -->
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-img-top position-relative overflow-hidden" style="height: 200px;">
+                        <img src="{{ url_for('static', filename='images/webcam.jpeg') }}" class="img-fluid w-100 h-100 object-fit-cover" alt="Webcam" onerror="this.src='https://via.placeholder.com/300x200?text=Webcam'">
+                        <div class="position-absolute top-0 start-0 p-3">
+                            <span class="badge bg-success">Real-time</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Live Webcam Classification</h5>
+                        <p class="card-text">Identify waste instantly using your webcam with our AI-powered recognition system.</p>
+                    </div>
+                    <div class="card-footer bg-white border-0 pt-0">
+                        <a href="{{ url_for('webcam') }}" class="btn btn-outline-success w-100">Try Now</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Image Upload Card -->
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-img-top position-relative overflow-hidden" style="height: 200px;">
+                        <img src="{{ url_for('static', filename='images/upload.jpeg') }}" class="img-fluid w-100 h-100 object-fit-cover" alt="Upload" onerror="this.src='https://via.placeholder.com/300x200?text=Upload'">
+                        <div class="position-absolute top-0 start-0 p-3">
+                            <span class="badge bg-success">Easy Upload</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Image Upload Classification</h5>
+                        <p class="card-text">Upload photos of waste items for instant identification and disposal guidance.</p>
+                    </div>
+                    <div class="card-footer bg-white border-0 pt-0">
+                        <a href="{{ url_for('upload') }}" class="btn btn-outline-success w-100">Upload Image</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Guide Card -->
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-img-top position-relative overflow-hidden" style="height: 200px;">
+                        <img src="{{ url_for('static', filename='images/guide.jpeg') }}" class="img-fluid w-100 h-100 object-fit-cover" alt="Guide" onerror="this.src='https://via.placeholder.com/300x200?text=Guide'">
+                        <div class="position-absolute top-0 start-0 p-3">
+                            <span class="badge bg-success">Educational</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Waste Navigation Guide</h5>
+                        <p class="card-text">Comprehensive tutorials on proper recycling and sustainable waste management.</p>
+                    </div>
+                    <div class="card-footer bg-white border-0 pt-0">
+                        <a href="{{ url_for('guide') }}" class="btn btn-outline-success w-100">Explore Guide</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Report Card -->
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-img-top position-relative overflow-hidden" style="height: 200px;">
+                        <img src="{{ url_for('static', filename='images/report.jpeg') }}" class="img-fluid w-100 h-100 object-fit-cover" alt="Report" onerror="this.src='https://via.placeholder.com/300x200?text=Report'">
+                        <div class="position-absolute top-0 start-0 p-3">
+                            <span class="badge bg-success">Community</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Report Illegal Dumping</h5>
+                        <p class="card-text">Report improper waste disposal with photos and location to help keep communities clean.</p>
+                    </div>
+                    <div class="card-footer bg-white border-0 pt-0">
+                        <a href="{{ url_for('report') }}" class="btn btn-outline-success w-100">Report Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Testimonials/Reviews Section -->
+<div class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="text-success mb-0">Community Reviews</h2>
+        <div>
+            {% if current_user.is_authenticated and not has_reviewed %}
+            <a href="{{ url_for('reviews') }}" class="btn btn-success btn-sm me-2">
+                <i class="bi bi-pencil-fill"></i> Add Review
+            </a>
+            {% endif %}
+            <a href="{{ url_for('reviews') }}" class="btn btn-outline-success btn-sm">
+                See All Reviews <i class="bi bi-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+    
+    <div class="row">
+        {% for review in recent_reviews %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 border-0 shadow-sm p-3">
+                <div class="d-flex align-items-center mb-3">
+                    {% if review.profile_photo %}
+                    <img src="{{ url_for('static', filename=review.profile_photo) }}" 
+                         class="rounded-circle me-3" width="50" height="50" 
+                         style="object-fit: cover" alt="{{ review.username }}">
+                    {% else %}
+                    <div class="rounded-circle bg-success bg-opacity-10 text-success d-flex align-items-center justify-content-center me-3" 
+                         style="width: 50px; height: 50px;">
+                        {{ review.username[0]|upper }}
+                    </div>
+                    {% endif %}
+                    <div>
+                        <h6 class="mb-0">{{ review.username }}</h6>
+                        <small class="text-muted">{{ review.created_at.strftime('%b %d, %Y') }}</small>
+                    </div>
+                </div>
+                <div class="text-warning mb-2">
+                    {% for i in range(5) %}
+                        {% if i < review.rating %}
+                            <i class="bi bi-star-fill"></i>
+                        {% else %}
+                            <i class="bi bi-star"></i>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <p class="card-text">{{ review.content|truncate(120) }}</p>
+                {% if review.content|length > 120 %}
+                <a href="{{ url_for('reviews') }}" class="small">Read more</a>
+                {% endif %}
+            </div>
+        </div>
+        {% else %}
+        <div class="col-12 text-center py-4">
+            <p class="text-muted">No reviews yet. Be the first to review!</p>
+            {% if current_user.is_authenticated %}
+            <a href="{{ url_for('reviews') }}" class="btn btn-success">
+                <i class="bi bi-pencil-fill"></i> Write a Review
+            </a>
+            {% else %}
+            <p>Please <a href="{{ url_for('login') }}">login</a> to leave a review</p>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    
+    {% if recent_reviews|length >= 5 %}
+    <div class="text-center mt-3">
+        <a href="{{ url_for('reviews') }}" class="btn btn-outline-success">
+            See More Reviews <i class="bi bi-arrow-right"></i>
+        </a>
+    </div>
+    {% endif %}
+</div>
+
+<!-- Call to Action -->
+<div class="bg-success text-white py-5">
+    <div class="container text-center">
+        <h2 class="mb-4">Join the Green Guide Community Today</h2>
+        <p class="lead mb-4">Start making a positive environmental impact with just a few clicks</p>
+        <div class="d-flex justify-content-center gap-3">
+            <a href="{{ url_for('signup') }}" class="btn btn-light btn-lg">Sign Up for Free</a>
+            <a href="{{ url_for('contact') }}" class="btn btn-outline-light btn-lg">Contact Us</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+{% block extra_js %}
+<script>
+    // Add Bootstrap Icons
+    document.addEventListener('DOMContentLoaded', function() {
+        const iconLink = document.createElement('link');
+        iconLink.rel = 'stylesheet';
+        iconLink.href = 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css';
+        document.head.appendChild(iconLink);
+    });
+</script>
+{% endblock %}
+
+

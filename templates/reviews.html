@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% block title %}Green Guide - Reviews{% endblock %}
+{% block content %}
+<div class="container py-5">
+    <h2 class="text-center text-success mb-5">User Reviews</h2>
+
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            {% for category, message in messages %}
+            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+    {% endwith %}
+
+    <!-- Review Submission Form -->
+    <div class="row justify-content-center mb-5">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Submit Your Review</h5>
+                    <form method="POST" action="{{ url_for('reviews') }}">
+                        <div class="mb-3">
+                            <label for="rating" class="form-label">Rating</label>
+                            <select class="form-select" id="rating" name="rating" required>
+                                <option value="" disabled selected>Select a rating</option>
+                                <option value="1">1 Star</option>
+                                <option \n                                <option value="2">2 Stars</option>
+                                <option value="3">3 Stars</option>
+                                <option value="4">4 Stars</option>
+                                <option value="5">5 Stars</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="content" class="form-label">Review</label>
+                            <textarea class="form-control" id="content" name="content" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-success">Submit Review</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reviews List -->
+    <div class="row">
+        {% if reviews %}
+        {% for review in reviews %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 border-0 shadow-sm p-4">
+                <div class="d-flex align-items-center mb-3">
+                    <div class="rounded-circle bg-success bg-opacity-10 text-success p-3 me-3" style="width: 50px; height: 50px;">
+                        <div class="text-center fw-bold">{{ review.username[:2]|upper }}</div>
+                    </div>
+                    <div>
+                        <h6 class="mb-0">{{ review.username }}</h6>
+                        <small class="text-muted">Posted on {{ review.created_at.strftime('%B %d, %Y') }}</small>
+                    </div>
+                </div>
+                <p class="card-text">"{{ review.content }}"</p>
+                <div class="text-warning mt-auto">
+                    {% for i in range(review.rating) %}
+                    <i class="bi bi-star-fill"></i>
+                    {% endfor %}
+                    {% for i in range(5 - review.rating) %}
+                    <i class="bi bi-star"></i>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <div class="col-12 text-center">
+            <p class="text-muted">No reviews yet. Be the first to share your experience!</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block title %}Admin Features Breakdown - Green Guide{% endblock %}
+{% block content %}
+<div class="container py-5">
+    <h2 class="text-success mb-4">Admin Features Breakdown</h2>
+    <p class="lead mb-5">Manage platform features and monitor user activity.</p>
+
+    <!-- Discussion Posts Management -->
+    <div class="card shadow-sm mb-5">
+        <div class="card-body">
+            <h5 class="card-title">Manage Discussion Posts</h5>
+            {% if posts %}
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Username</th>
+                                <th>Content</th>
+                                <th>Image</th>
+                                <th>Link</th>
+                                <th>Created At</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for post in posts %}
+                                <tr>
+                                    <td>{{ post.username }}</td>
+                                    <td>{{ post.content|truncate(50) }}</td>
+                                    <td>
+                                        {% if post.image_path %}
+                                            <img src="{{ url_for('static', filename=post.image_path|replace('static/', '')) }}" style="max-width: 100px; max-height: 100px;" alt="Post Image">
+                                        {% else %}
+                                            No Image
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if post.link %}
+                                            <a href="{{ post.link }}" target="_blank">{{ post.link|truncate(30) }}</a>
+                                        {% else %}
+                                            No Link
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ post.created_at.strftime('%B %d, %Y %H:%M') }}</td>
+                                    <td>
+                                        <form method="POST" action="{{ url_for('delete_post', post_id=post.id) }}">
+                                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this post?')">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <p class="text-muted">No posts available.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

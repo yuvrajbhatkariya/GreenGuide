@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% block title %}Green Guide - About{% endblock %}
+{% block content %}
+    <section class="container my-5">
+        <!-- Header Section -->
+        <div class="text-center mb-5">
+            <h1 class="display-4 fw-bold text-success">About Green Guide</h1>
+            <p class="lead text-muted mx-auto" style="max-width: 700px;">
+                Green Guide is committed to revolutionizing sustainable waste management through cutting-edge AI tools and accessible educational resources.
+            </p>
+        </div>
+
+        <!-- Mission Section -->
+        <div class="row justify-content-center mb-5">
+            <div class="col-lg-8">
+                <div class="card shadow-sm border-0 p-4">
+                    <h2 class="h4 fw-semibold text-center text-success">Our Mission</h2>
+                    <p class="text-muted text-center">
+                        We empower individuals and communities to make informed decisions about waste disposal and recycling, minimizing environmental impact and fostering a greener future.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Team Section -->
+        <div class="text-center mb-5">
+            <h2 class="h3 fw-bold text-success">Meet Our Team</h2>
+            <p class="text-muted mx-auto" style="max-width: 600px;">
+                Our dedicated team of innovators and environmentalists drives Green Guide’s mission to promote sustainability.
+            </p>
+        </div>
+        <div class="row g-4">
+            <!-- Team Member 1 -->
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm text-center transition-hover">
+                    <img src="https://picsum.photos/id/100/150/150" class="rounded-circle mx-auto mt-3" alt="Yuvraj Bhatkariya" style="width: 150px; height: 150px;">
+                    <div class="card-body">
+                        <h5 class="card-title fw-semibold">Yuvraj Bhatkariya</h5>
+                        <p class="text-success mb-2">Founder & CEO</p>
+                        <p class="card-text text-muted">
+                            Yuvraj leads Green Guide with a passion for sustainability and over 3 years of experience in environmental technology.
+                        </p>
+                        <p class="card-text">
+                            <a href="mailto:yuvraj23102@iiitnr.edu.in" class="text-success">yuvraj23102@iiitnr.edu.in</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- Team Member 2 -->
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm text-center transition-hover">
+                    <img src="https://picsum.photos/id/101/150/150" class="rounded-circle mx-auto mt-3" alt="Abhinav Nirapure" style="width: 150px; height: 150px;">
+                    <div class="card-body">
+                        <h5 class="card-title fw-semibold">Abhinav Nirapure</h5>
+                        <p class="text-success mb-2">Lead Developer</p>
+                        <p class="card-text text-muted">
+                            Abhinav designs our AI-powered tools, bringing expertise in machine learning and a commitment to eco-friendly solutions.
+                        </p>
+                        <p class="card-text">
+                            <a href="abhinav23102@iiitnr.edu.in" class="text-success">abhinav23102@iiitnr.edu.in</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- Team Member 3 -->
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm text-center transition-hover">
+                    <img src="https://picsum.photos/id/102/150/150" class="rounded-circle mx-auto mt-3" alt="Sanjeev Jatvar" style="width: 150px; height: 150px;">
+                    <div class="card-body">
+                        <h5 class="card-title fw-semibold">Sanjeev Jatvar</h5>
+                        <p class="text-success mb-2">Education Coordinator</p>
+                        <p class="card-text text-muted">
+                            Sanjeev develops our educational resources, ensuring communities have the knowledge to embrace sustainable practices.
+                        </p>
+                        <p class="card-text">
+                            <a href="sanjee23102@iiitnr.edu.in" class="text-success">sanjee23102@iiitnr.edu.in</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="text-center mt-5">
+            <h3 class="h4 fw-semibold text-success">Join Us in Making a Difference</h3>
+            <p class="text-muted mb-4">
+                Learn more about how you can contribute to a sustainable future with Green Guide.
+            </p>
+            <a href="{{ url_for('contact') }}" class="btn btn-success btn-lg">Get Involved</a>
+        </div>
+    </section>
+
+    <!-- Custom CSS for subtle hover effects -->
+    <style>
+        .transition-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .transition-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+        }
+    </style>
+{% endblock %}

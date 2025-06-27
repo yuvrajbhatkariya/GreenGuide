@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}Green Guide - Webcam Classification{% endblock %}
+{% block content %}
+    <h1 class="text-center mb-4">Live Webcam Waste Classification</h1>
+    <p class="text-center mb-4">Point your webcam at waste items to classify them in real-time.</p>
+    
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-body text-center">
+                    <video id="webcam" autoplay playsinline style="display: none;"></video>
+                    <canvas id="canvas" class="img-fluid"></canvas>
+                    <div class="mt-3">
+                        <button id="startBtn" class="btn btn-success me-2">Start Webcam</button>
+                        <button id="stopBtn" class="btn btn-danger" disabled>Stop Webcam</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Detection Results</h5>
+                    <ul id="results" class="list-group">
+                        <li class="list-group-item">No detections yet...</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/webcam.js') }}"></script>
+{% endblock %}

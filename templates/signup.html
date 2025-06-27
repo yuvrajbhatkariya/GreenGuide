@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %}Green Guide - Sign Up{% endblock %}
+
+{% block content %}
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-body p-4">
+                    <h3 class="text-center mb-4">Create an account</h3>
+                    <form method="post" action="{{ url_for('signup') }}">
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email address</label>
+                            <div class="input-group">
+                                <input type="email" class="form-control" id="email" name="email" required placeholder="Enter email">
+                                <span class="input-group-text text-primary"><i class="bi bi-upload"></i></span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" name="password" required placeholder="Enter password">
+                        </div>
+                        <div class="mb-3">
+                            <label for="user_type" class="form-label">User Type</label>
+                            <select class="form-select" id="user_type" name="user_type" required>
+                                <option value="citizen">Citizen</option>
+                                <option value="government_official">Government Official</option>
+                                <option value="admin">Admin</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-success w-100 mb-3">Continue</button>
+                    </form>
+                    <p class="text-center mb-2">Already have an account? <a href="{{ url_for('login') }}" class="text-success">Log in</a></p>
+                    <div class="text-center mb-2">OR</div>
+                    <button class="btn btn-outline-secondary w-100 mb-2" type="button">
+                        <i class="bi bi-telephone"></i> Continue with phone
+                    </button>
+                    <button class="btn btn-outline-secondary w-100 mb-2" type="button">
+                        <img src="{{ url_for('static', filename='images/google.png') }}" alt="Google" class="me-2" width="16"> Continue with Google
+                    </button>
+                    <button class="btn btn-outline-secondary w-100 mb-2" type="button">
+                        <img src="{{ url_for('static', filename='images/microsoft.png') }}" alt="Microsoft" class="me-2" width="16"> Continue with Microsoft Account
+                    </button>
+                    <button class="btn btn-outline-secondary w-100 mb-2" type="button">
+                        <img src="{{ url_for('static', filename='images/apple.png') }}" alt="Apple" class="me-2" width="16"> Continue with Apple
+                    </button>
+                    <p class="text-center text-success mt-3">
+                        <a href="{{ url_for('terms') }}">Terms of Use</a> | <a href="{{ url_for('privacy') }}">Privacy Policy</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

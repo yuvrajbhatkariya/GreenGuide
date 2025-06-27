@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title %}Government Reports{% endblock %}
+{% block content %}
+
+<div class="container-fluid px-3 px-md-5 py-5">
+    <h2 class="text-success fw-bold mb-4">Government Reports Dashboard</h2>
+    <p class="lead mb-4">Review and manage waste reports submitted by citizens.</p>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <!-- Reports List -->
+    {% if reports %}
+        <div class="row">
+            {% for report in reports %}
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="{{ url_for('static', filename=report.image_path|replace('static/', '')) }}" class="card-img-top" alt="Report Image">
+                        <div class="card-body">
+                            <h5 class="card-title">Report #{{ report.id }} by {{ report.username }}</h5>
+                            <p class="card-text"><strong>Location:</strong> {{ report.house_number }}, {{ report.street_name }}, {{ report.city }}, {{ report.pin_code }}, {{ report.country }}</p>
+                            <p class="card-text"><strong>Description:</strong> {{ report.description }}</p>
+                            <p class="card-text"><strong>Status:</strong> {{ report.status }}</p>
+                            <p class="card-text"><strong>Submitted:</strong> {{ report.created_at }}</p>
+                            <!-- Status Update Form -->
+                            <form method="POST">
+                                <input type="hidden" name="report_id" value="{{ report.id }}">
+                                <div class="mb-3">
+                                    <label for="status_{{ report.id }}" class="form-label">Update Status</label>
+                                    <select class="form-select" id="status_{{ report.id }}" name="status">
+                                        <option value="Pending" {% if report.status == 'Pending' %}selected{% endif %}>Pending</option>
+                                        <option value="Approved" {% if report.status == 'Approved' %}selected{% endif %}>Approved</option>
+                                        <option value="Not Approved" {% if report.status == 'Not Approved' %}selected{% endif %}>Not Approved</option>
+                                        <option value="Done" {% if report.status == 'Done' %}selected{% endif %}>Done</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Update</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No reports available.</p>
+    {% endif %}
+</div>
+
+{% endblock %}

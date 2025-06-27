@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% block title %}Report Garbage Detection{% endblock %}
+{% block content %}
+
+<div class="container-fluid px-3 px-md-5 py-5">
+    <h2 class="text-success fw-bold mb-4">Report Garbage Detection</h2>
+    <p class="lead mb-4">Help keep our environment clean by reporting illegal waste dumping.</p>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <!-- Report Submission Form -->
+    <h3 class="mb-3">Submit a New Report</h3>
+    <form method="POST" enctype="multipart/form-data">
+        <!-- Image Upload -->
+        <div class="mb-3">
+            <label for="file" class="form-label">Upload Photo of Waste</label>
+            <input type="file" class="form-control" id="file" name="file" accept="image/*" required>
+        </div>
+
+        <!-- Location Details -->
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="house_number" class="form-label">House/Apartment Number</label>
+                <input type="text" class="form-control" id="house_number" name="house_number" placeholder="e.g., 123 or Apt 4B" required>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="street_name" class="form-label">Street Name or Road Name</label>
+                <input type="text" class="form-control" id="street_name" name="street_name" placeholder="e.g., Main Street" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="city" class="form-label">Village/Town/City Name</label>
+                <input type="text" class="form-control" id="city" name="city" placeholder="e.g., Springfield" required>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="pin_code" class="form-label">PIN Code/Postal Code/ZIP Code</label>
+                <input type="text" class="form-control" id="pin_code" name="pin_code" placeholder="e.g., 12345" required>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="country" class="form-label">Country</label>
+            <input type="text" class="form-control" id="country" name="country" placeholder="e.g., USA" required>
+        </div>
+
+        <!-- Report Description -->
+        <div class="mb-3">
+            <label for="description" class="form-label">Description of Issue</label>
+            <textarea class="form-control" id="description" name="description" rows="5" placeholder="Describe the waste issue" required></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-success">Submit Report</button>
+    </form>
+
+    <!-- Display Processed Image and Detections (if any) -->
+    {% if image or detections %}
+        <div class="mt-5">
+            <h3 class="mb-3">Analysis Result</h3>
+            {% if image %}
+                <img src="{{ image }}" class="img-fluid rounded mb-3" alt="Processed Image" style="max-width: 500px;">
+            {% endif %}
+            {% if detections %}
+                <h5>Detections:</h5>
+                <ul>
+                    {% for detection in detections %}
+                        <li>{{ detection.class }} (Confidence: {{ detection.confidence|round(2) }})</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    <!-- Display User's Reports -->
+    {% if reports %}
+        <div class="mt-5">
+            <h3 class="mb-3">Your Reports</h3>
+            <div class="row">
+                {% for report in reports %}
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100 shadow-sm">
+                            <img src="{{ url_for('static', filename=report.image_path|replace('static/', '')) }}" class="card-img-top" alt="Report Image">
+                            <div class="card-body">
+                                <h5 class="card-title">Report #{{ report.id }}</h5>
+                                <p class="card-text"><strong>Location:</strong> {{ report.house_number }}, {{ report.street_name }}, {{ report.city }}, {{ report.pin_code }}, {{ report.country }}</p>
+                                <p class="card-text"><strong>Description:</strong> {{ report.description }}</p>
+                                <p class="card-text"><strong>Status:</strong> {{ report.status }}</p>
+                                <p class="card-text"><strong>Submitted:</strong> {{ report.created_at }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+</div>
+
+{% endblock %}

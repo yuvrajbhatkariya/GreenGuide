@@ -1,0 +1,547 @@
+{% extends 'base.html' %}
+{% block title %}Green Guide - Waste Navigation{% endblock %}
+{% block content %}
+<div class="container py-5">
+    <h1 class="text-center mb-4">Waste Navigation Guide</h1>
+    <p class="text-center mb-4">Learn how to properly identify, dispose of, and recycle different types of waste
+        materials for a healthier environment.</p>
+
+    <!-- Search and filter options -->
+    <div class="row mb-5">
+        <div class="col-md-8 mx-auto">
+            <div class="input-group">
+                <input type="text" id="waste-search" class="form-control" placeholder="Search waste types...">
+                <div class="input-group-append">
+                    <button class="btn btn-success" type="button" id="search-btn">Search</button>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center mt-3">
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-outline-success active" data-filter="all">All</button>
+                    <button type="button" class="btn btn-outline-success" data-filter="household">Household</button>
+                    <button type="button" class="btn btn-outline-success" data-filter="recyclable">Recyclable</button>
+                    <button type="button" class="btn btn-outline-success" data-filter="hazardous">Hazardous</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Waste Categories -->
+    <div class="row" id="waste-categories">
+        <!-- Plastic Waste -->
+        <div class="col-md-6 col-lg-4 mb-4 waste-item" data-category="recyclable household">
+            <div class="card h-100 shadow hover-card">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="card-title mb-0">Plastic Waste</h5>
+                </div>
+                <div class="card-body">
+                    <h6 class="font-weight-bold">Common Items:</h6>
+                    <p>Bottles, containers, packaging, bags, wraps, toys, cutlery</p>
+        
+                    <h6 class="font-weight-bold">Environmental Impact:</h6>
+                    <p>Non-biodegradable, persists for hundreds of years, pollutes oceans and harms marine life,
+                        microplastics enter food chain</p>
+        
+                    <h6 class="font-weight-bold">Proper Disposal:</h6>
+                    <p>Clean and sort by type (look for recycling numbers 1-7). Place in blue recycling bins. Soft
+                        plastics may require special collection points.</p>
+        
+                    <div class="text-center">
+                        <img src="{{ url_for('static', filename='images/bin-blue.png') }}" alt="Blue Recycling Bin"
+                            class="bin-icon mb-2">
+                        <p class="bin-label"><strong>Blue Bin</strong></p>
+                    </div>
+        
+                    <a href="https://pubs.acs.org/doi/10.1021/acssuschemeng.1c05013"
+                        class="btn btn-outline-primary btn-sm" target="_blank" rel="noopener noreferrer">
+                        Learn More
+                    </a>                
+                </div>
+            </div>
+        </div>
+
+        <!-- Paper Waste -->
+        <div class="col-md-6 col-lg-4 mb-4 waste-item" data-category="recyclable household">
+            <div class="card h-100 shadow hover-card">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="card-title mb-0">Paper Waste</h5>
+                </div>
+                <div class="card-body">
+                    <h6 class="font-weight-bold">Common Items:</h6>
+                    <p>Newspapers, magazines, office paper, cardboard, packaging, books, notebooks</p>
+
+                    <h6 class="font-weight-bold">Environmental Impact:</h6>
+                    <p>Contributes to deforestation when not recycled. Biodegradable but produces methane in landfills
+                    </p>
+
+                    <h6 class="font-weight-bold">Proper Disposal:</h6>
+                    <p>Keep dry and clean. Flatten cardboard boxes. Avoid recycling paper with food contamination, wax
+                        coating, or adhesives.</p>
+
+                    <div class="text-center">
+                        <img src="{{ url_for('static', filename='images/bin-blue.png') }}" alt="Blue Recycling Bin"
+                            class="bin-icon mb-2">
+                        <p class="bin-label"><strong>Blue Bin</strong></p>
+                    </div>
+
+                    <a href="https://www.products.pcc.eu/en/blog/how-to-correctly-segregate-paper-waste/"
+                        class="btn btn-outline-primary btn-sm" target="_blank" rel="noopener noreferrer">
+                        Learn More
+                    </a> 
+                </div>
+            </div>
+        </div>
+
+        <!-- Organic Waste -->
+        <div class="col-md-6 col-lg-4 mb-4 waste-item" data-category="household">
+            <div class="card h-100 shadow hover-card">
+                <div class="card-header bg-success text-white">
+                    <h5 class="card-title mb-0">Organic Waste</h5>
+                </div>
+                <div class="card-body">
+                    <h6 class="font-weight-bold">Common Items:</h6>
+                    <p>Food scraps, fruit/vegetable peels, coffee grounds, eggshells, yard waste, leaves, plant
+                        trimmings</p>
+
+                    <h6 class="font-weight-bold">Environmental Impact:</h6>
+                    <p>Produces methane (powerful greenhouse gas) in landfills when not properly composted. When
+                        composted, returns nutrients to soil</p>
+
+                    <h6 class="font-weight-bold">Proper Disposal:</h6>
+                    <p>Compost in home bins or municipal green bins. Avoid composting meat, dairy, oils which attract
+                        pests.</p>
+
+                    <div class="text-center">
+                        <img src="{{ url_for('static', filename='images/bin-green.png') }}" alt="Green Compost Bin"
+                            class="bin-icon mb-2">
+                        <p class="bin-label"><strong>Green Bin</strong></p>
+                    </div>
+
+                    <a href="https://www.ecepl.com/segregate-organic-waste/#:~:text=Segregation%20of%20organic%20waste,to%20use%20it%20as%20compost."
+                        class="btn btn-outline-success btn-sm" target="_blank" rel="noopener noreferrer">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Glass Waste -->
+        <div class="col-md-6 col-lg-4 mb-4 waste-item" data-category="recyclable household">
+            <div class="card h-100 shadow hover-card">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="card-title mb-0">Glass Waste</h5>
+                </div>
+                <div class="card-body">
+                    <h6 class="font-weight-bold">Common Items:</h6>
+                    <p>Bottles, jars, containers, drinking glasses, mirrors, window glass</p>
+
+                    <h6 class="font-weight-bold">Environmental Impact:</h6>
+                    <p>Non-biodegradable but 100% recyclable without quality loss. Saves energy when recycled compared
+                        to making new glass</p>
+
+                    <h6 class="font-weight-bold">Proper Disposal:</h6>
+                    <p>Rinse containers. Remove lids and caps. Sort by color where required. Broken glass needs special
+                        handling.</p>
+
+                    <div class="text-center">
+                        <img src="{{ url_for('static', filename='images/bin-blue.png') }}" alt="Blue Recycling Bin"
+                            class="bin-icon mb-2">
+                        <p class="bin-label"><strong>Blue Bin</strong></p>
+                    </div>
+
+                    <a href="https://picvisa.com/glass-recycling-guide/"
+                        class="btn btn-outline-primary btn-sm" target="_blank" rel="noopener noreferrer">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Metallic Waste -->
+        <div class="col-md-6 col-lg-4 mb-4 waste-item" data-category="recyclable household">
+            <div class="card h-100 shadow hover-card">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="card-title mb-0">Metallic Waste</h5>
+                </div>
+                <div class="card-body">
+                    <h6 class="font-weight-bold">Common Items:</h6>
+                    <p>Aluminum cans, steel cans, foil, metal bottle caps, metal containers, small appliances</p>
+
+                    <h6 class="font-weight-bold">Environmental Impact:</h6>
+                    <p>Mining for metals damages landscapes. Recycling saves 95% energy compared to new production.
+                        Metals don't degrade in quality when recycled</p>
+
+                    <h6 class="font-weight-bold">Proper Disposal:</h6>
+                    <p>Rinse food containers. Crush cans to save space. Large metal items may need special collection or
+                        scrap yard drop-off.</p>
+
+                    <div class="text-center">
+                        <img src="{{ url_for('static', filename='images/bin-blue.png') }}" alt="Blue Recycling Bin"
+                            class="bin-icon mb-2">
+                        <p class="bin-label"><strong>Blue Bin</strong></p>
+                    </div>
+
+                    <a href="https://www.recyclingbristol.com/how-to-recycle-metal-waste-a-complete-guide/"
+                        class="btn btn-outline-primary btn-sm" target="_blank" rel="noopener noreferrer">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- E-Waste -->
+        <div class="col-md-6 col-lg-4 mb-4 waste-item" data-category="hazardous">
+            <div class="card h-100 shadow hover-card">
+                <div class="card-header bg-danger text-white">
+                    <h5 class="card-title mb-0">E-Waste</h5>
+                </div>
+                <div class="card-body">
+                    <h6 class="font-weight-bold">Common Items:</h6>
+                    <p>Computers, phones, TVs, printers, batteries, chargers, electronic devices, appliances</p>
+
+                    <h6 class="font-weight-bold">Environmental Impact:</h6>
+                    <p>Contains toxic materials (lead, mercury, cadmium) that can leach into soil and water. Valuable
+                        metals can be recovered through proper recycling</p>
+
+                    <h6 class="font-weight-bold">Proper Disposal:</h6>
+                    <p>Never throw in regular trash. Take to designated e-waste collection centers, retailer take-back
+                        programs, or community collection events.</p>
+
+                    <div class="text-center">
+                        <img src="{{ url_for('static', filename='images/bin-red.png') }}" alt="E-Waste Collection Point"
+                            class="bin-icon mb-2">
+                        <p class="bin-label"><strong>Special Collection</strong></p>
+                    </div>
+
+                    <a href="https://mlienvironmental.com/blog/a-pocket-guide-e-waste-disposal-methods/"
+                        class="btn btn-outline-danger btn-sm" target="_blank" rel="noopener noreferrer">
+                        Learn More
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Hazardous Waste -->
+        <div class="col-md-6 col-lg-4 mb-4 waste-item" data-category="hazardous">
+            <div class="card h-100 shadow hover-card">
+                <div class="card-header bg-danger text-white">
+                    <h5 class="card-title mb-0">Hazardous Waste</h5>
+                </div>
+                <div class="card-body">
+                    <h6 class="font-weight-bold">Common Items:</h6>
+                    <p>Paint, chemicals, pesticides, cleaning products, motor oil, fluorescent bulbs, aerosol cans</p>
+
+                    <h6 class="font-weight-bold">Environmental Impact:</h6>
+                    <p>Toxic to human health, wildlife, and ecosystems. Can contaminate soil, water, and air if
+                        improperly disposed</p>
+
+                    <h6 class="font-weight-bold">Proper Disposal:</h6>
+                    <p>Take to hazardous waste collection facilities. Never pour down drains or place in regular trash.
+                        Many cities have special collection days.</p>
+
+                    <div class="text-center">
+                        <img src="{{ url_for('static', filename='images/bin-red.png') }}"
+                            alt="Hazardous Waste Collection" class="bin-icon mb-2">
+                        <p class="bin-label"><strong>Hazardous Waste Facility</strong></p>
+                    </div>
+
+                    <a href="https://safety.uchicago.edu/environmental-health/hazardous-waste-and-handling/hazardous-waste-and-disposal-procedures/"
+                        class="btn btn-outline-danger btn-sm" target="_blank" rel="noopener noreferrer">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Textile Waste -->
+        <div class="col-md-6 col-lg-4 mb-4 waste-item" data-category="household">
+            <div class="card h-100 shadow hover-card">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="card-title mb-0">Textile Waste</h5>
+                </div>
+                <div class="card-body">
+                    <h6 class="font-weight-bold">Common Items:</h6>
+                    <p>Clothing, shoes, bedding, towels, curtains, carpets, fabric scraps</p>
+
+                    <h6 class="font-weight-bold">Environmental Impact:</h6>
+                    <p>Synthetic textiles can take hundreds of years to decompose. Production requires significant water
+                        and resources. Dyes can leach harmful chemicals</p>
+
+                    <h6 class="font-weight-bold">Proper Disposal:</h6>
+                    <p>Donate usable items. Recycle through textile collection programs. Repurpose as rags. Many
+                        retailers offer take-back programs.</p>
+
+                    <div class="text-center">
+                        <img src="{{ url_for('static', filename='images/bin-blue.png') }}" alt="Textile Collection"
+                            class="bin-icon mb-2">
+                        <p class="bin-label"><strong>Donation/Special Collection</strong></p>
+                    </div>
+
+                    <a href="https://www.redressdesignaward.com/academy/resources/guide/sourcing"
+                        class="btn btn-outline-primary btn-sm" target="_blank" rel="noopener noreferrer">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Call to action -->
+    <div class="row mt-4">
+        <div class="col-12 text-center">
+            <div class="card bg-light p-4">
+                <h3>Need personalized waste disposal advice?</h3>
+                <p>Use our AI-powered waste detection tool to instantly identify waste types and get disposal
+                    recommendations.</p>
+                <div class="d-flex justify-content-center">
+                    <a href="{{ url_for('webcam') }}" class="btn btn-success mx-2">Try Webcam Detection</a>
+                    <a href="{{ url_for('upload') }}" class="btn btn-outline-success mx-2">Upload Image</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modals for each waste type with detailed information -->
+<!-- Plastic Modal -->
+<div class="modal fade" id="plasticModal" tabindex="-1" role="dialog" aria-labelledby="plasticModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-success text-white">
+                <h5 class="modal-title" id="plasticModalLabel">Plastic Waste Management</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Types of Plastic Waste</h5>
+                        <ul>
+                            <li><strong>PET (1)</strong>: Water bottles, soda bottles</li>
+                            <li><strong>HDPE (2)</strong>: Milk jugs, detergent bottles</li>
+                            <li><strong>PVC (3)</strong>: Pipes, shower curtains</li>
+                            <li><strong>LDPE (4)</strong>: Grocery bags, shrink wrap</li>
+                            <li><strong>PP (5)</strong>: Yogurt containers, medicine bottles</li>
+                            <li><strong>PS (6)</strong>: Styrofoam, disposable utensils</li>
+                            <li><strong>Other (7)</strong>: Mixed plastics</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Environmental & Health Impacts</h5>
+                        <ul>
+                            <li>Takes 400-1000 years to decompose</li>
+                            <li>Microplastics contaminate water, soil, and food</li>
+                            <li>Harms wildlife through ingestion and entanglement</li>
+                            <li>Some plastics leach harmful chemicals (BPA, phthalates)</li>
+                            <li>Production creates greenhouse gas emissions</li>
+                        </ul>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Proper Disposal Methods</h5>
+                        <ol>
+                            <li>Rinse containers to remove food residue</li>
+                            <li>Remove labels and caps when required</li>
+                            <li>Flatten to save space</li>
+                            <li>Check local guidelines for accepted types</li>
+                            <li>Take plastic bags to store collection points</li>
+                        </ol>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Reduction Tips</h5>
+                        <ul>
+                            <li>Use reusable water bottles and shopping bags</li>
+                            <li>Buy products with minimal packaging</li>
+                            <li>Choose glass, metal, or paper alternatives</li>
+                            <li>Avoid single-use plastic items</li>
+                            <li>Buy in bulk to reduce packaging</li>
+                        </ul>
+                    </div>
+                </div>
+                <hr>
+                <h5>Official Resources</h5>
+                <div class="row">
+                    <div class="col-md-6">
+                        <a href="https://www.epa.gov/trash-free-waters/reducing-waste-what-you-can-do"
+                            class="btn btn-outline-success btn-block mb-2" target="_blank">EPA Plastic Waste
+                            Guidelines</a>
+                        <a href="https://www.plasticpollutioncoalition.org/" class="btn btn-outline-success btn-block"
+                            target="_blank">Plastic Pollution Coalition</a>
+                    </div>
+                    <div class="col-md-6">
+                        <a href="https://www.recyclenow.com/recycling-knowledge/how-is-it-recycled/plastics"
+                            class="btn btn-outline-success btn-block mb-2" target="_blank">Recycle Now: Plastic
+                            Recycling</a>
+                        <a href="https://www.plasticfreejuly.org/" class="btn btn-outline-success btn-block"
+                            target="_blank">Plastic Free July Challenge</a>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Additional modals for other waste types follow similar structure -->
+<!-- Paper Modal -->
+<div class="modal fade" id="paperModal" tabindex="-1" role="dialog" aria-labelledby="paperModalLabel"
+    aria-hidden="true">
+    <!-- Similar structure to plastic modal -->
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-success text-white">
+                <h5 class="modal-title" id="paperModalLabel">Paper Waste Management</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Content similar to plastic modal but for paper waste -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Types of Paper Waste</h5>
+                        <ul>
+                            <li><strong>Office Paper</strong>: Printouts, documents, letters</li>
+                            <li><strong>Cardboard</strong>: Boxes, packaging materials</li>
+                            <li><strong>Newspaper</strong>: Dailies, magazines, flyers</li>
+                            <li><strong>Mixed Paper</strong>: Envelopes, note paper</li>
+                            <li><strong>Books</strong>: Hardcover, paperback, textbooks</li>
+                            <li><strong>Specialized Paper</strong>: Glossy magazines, catalogs</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Environmental & Health Impacts</h5>
+                        <ul>
+                            <li>Trees harvested for paper production contribute to deforestation</li>
+                            <li>Paper production consumes large amounts of water and energy</li>
+                            <li>Chemical processes in paper production can pollute waterways</li>
+                            <li>Biodegradable but produces methane in landfills when not recycled</li>
+                            <li>Recycling paper saves 17 trees per ton compared to virgin production</li>
+                        </ul>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Proper Disposal Methods</h5>
+                        <ol>
+                            <li>Keep paper dry and clean</li>
+                            <li>Remove plastic windows from envelopes</li>
+                            <li>Flatten cardboard boxes to save space</li>
+                            <li>Remove non-paper materials (staples okay in most areas)</li>
+                            <li>Separate by type if required locally</li>
+                        </ol>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Reduction Tips</h5>
+                        <ul>
+                            <li>Go digital for bills, statements, and documents</li>
+                            <li>Use both sides of paper when printing</li>
+                            <li>Opt out of junk mail and catalogs</li>
+                            <li>Reuse packaging materials</li>
+                            <li>Choose recycled paper products</li>
+                        </ul>
+                    </div>
+                </div>
+                <hr>
+                <h5>Official Resources</h5>
+                <div class="row">
+                    <div class="col-md-6">
+                        <a href="https://www.epa.gov/recycle/paper-recycling"
+                            class="btn btn-outline-success btn-block mb-2" target="_blank">EPA Paper Recycling
+                            Guidelines</a>
+                        <a href="https://www.paperrecycles.org/" class="btn btn-outline-success btn-block"
+                            target="_blank">Paper Recycling Coalition</a>
+                    </div>
+                    <div class="col-md-6">
+                        <a href="https://www.recyclenow.com/recycling-knowledge/how-is-it-recycled/paper"
+                            class="btn btn-outline-success btn-block mb-2" target="_blank">Recycle Now: Paper
+                            Recycling</a>
+                        <a href="https://www.fsc.org/" class="btn btn-outline-success btn-block" target="_blank">Forest
+                            Stewardship Council</a>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add similar modals for each waste type -->
+
+<!-- Add JavaScript for search and filter functionality -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Search functionality
+        document.getElementById('search-btn').addEventListener('click', function () {
+            const searchTerm = document.getElementById('waste-search').value.toLowerCase();
+            const wasteItems = document.querySelectorAll('.waste-item');
+
+            wasteItems.forEach(item => {
+                const content = item.textContent.toLowerCase();
+                if (content.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+
+        // Filter functionality
+        const filterButtons = document.querySelectorAll('[data-filter]');
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const filter = this.getAttribute('data-filter');
+                const wasteItems = document.querySelectorAll('.waste-item');
+
+                // Update active button
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+
+                wasteItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category').includes(filter)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    });
+</script>
+
+<!-- Add custom styles -->
+<style>
+    .hover-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hover-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .bin-icon {
+        max-width: 60px;
+        height: auto;
+    }
+
+    .bin-label {
+        font-size: 14px;
+        color: #555;
+    }
+
+    .card-header {
+        border-bottom: none;
+    }
+</style>
+{% endblock %}

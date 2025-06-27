@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}Green Guide - Upload Image{% endblock %}
+{% block content %}
+    <h1 class="text-center mb-4">Upload Image for Waste Classification</h1>
+    <p class="text-center mb-4">Upload an image of waste to identify its type.</p>
+    
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <input type="file" class="form-control" name="file" accept="image/*" required>
+                        </div>
+                        <button type="submit" class="btn btn-success">Upload and Classify</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    {% if image %}
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-8">
+                <div class="card shadow-sm">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Classification Result</h5>
+                        <img src="{{ image }}" class="img-fluid mb-3" style="max-width: 640px;" alt="Processed Image">
+                        <h6>Detections:</h6>
+                        <ul class="list-group">
+                            {% if detections %}
+                                {% for detection in detections %}
+                                    <li class="list-group-item">{{ detection.class }}: {{ (detection.confidence * 100)|round(2) }}%</li>
+                                {% endfor %}
+                            {% else %}
+                                <li class="list-group-item">No detections found.</li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

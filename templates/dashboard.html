@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% block title %}Green Guide - Dashboard{% endblock %}
+
+{% block content %}
+    <div class="container-fluid px-3 px-md-5 mt-4">
+        <h1 class="mb-4">Green Guide Dashboard</h1>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="bi bi-camera-video" style="font-size: 2rem; color: #0d6efd;"></i>
+                        <h5 class="card-title mt-3">Webcam</h5>
+                        <p class="card-text">Classify waste in real-time using your webcam.</p>
+                        <a href="{{ url_for('webcam') }}" class="btn btn-primary">Go</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="bi bi-upload" style="font-size: 2rem; color: #0d6efd;"></i>
+                        <h5 class="card-title mt-3">Upload Image</h5>
+                        <p class="card-text">Upload an image for waste classification.</p>
+                        <a href="{{ url_for('upload') }}" class="btn btn-primary">Go</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="bi bi-exclamation-triangle" style="font-size: 2rem; color: #0d6efd;"></i>
+                        <h5 class="card-title mt-3">Report Garbage</h5>
+                        <p class="card-text">Report illegal waste dumping to authorities.</p>
+                        <a href="{{ url_for('report') }}" class="btn btn-primary">Go</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="bi bi-book" style="font-size: 2rem; color: #0d6efd;"></i>
+                        <h5 class="card-title mt-3">Waste Guide</h5>
+                        <p class="card-text">Learn how to dispose of waste properly.</p>
+                        <a href="{{ url_for('guide') }}" class="btn btn-primary">Go</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="bi bi-info-circle" style="font-size: 2rem; color: #0d6efd;"></i>
+                        <h5 class="card-title mt-3">About</h5>
+                        <p class="card-text">Learn more about Green Guide.</p>
+                        <a href="{{ url_for('about') }}" class="btn btn-primary">Go</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="bi bi-envelope" style="font-size: 2rem; color: #0d6efd;"></i>
+                        <h5 class="card-title mt-3">Contact</h5>
+                        <p class="card-text">Get in touch with us.</p>
+                        <a href="{{ url_for('contact') }}" class="btn btn-primary">Go</a>
+                    </div>
+                </div>
+            </div>
+            {% if current_user.user_type == 'admin' %}
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="bi bi-gear" style="font-size: 2rem; color: #0d6efd;"></i>
+                            <h5 class="card-title mt-3">Features Breakdown</h5>
+                            <p class="card-text">Access admin features.</p>
+                            <a href="{{ url_for('features_breakdown_dashboard') }}" class="btn btn-primary">Go</a>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
