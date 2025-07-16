@@ -200,29 +200,18 @@ green-guide/
 
 ---
 
-## 🤝 Contributing
+## 👥 Project Contributors
 
-We welcome contributions from developers and environmentalists!
-
-1. Fork the repo  
-2. Create a feature branch: `git checkout -b feature/your-feature`  
-3. Commit changes: `git commit -m "Add your feature"`  
-4. Push to branch: `git push origin feature/your-feature`  
-5. Open a Pull Request 🎉
-
----
-
-## 📜 License
-
-Licensed under the [MIT License](LICENSE).
+- [Yuvraj Bhatkariya](https://linkedin.com/in/yuvraj-bhatkariya-562048283)
+- [Abhinav Nirapure](https://linkedin.com/in/abhinav-nirapure-67734328a)
+- [Sanjeev Jatwar](https://linkedin.com/in/sanjeev-jatwar)
 
 ---
 
 ## 📬 Contact
 
-📨 For questions, suggestions, or support:  
-Visit the [/contact](http://localhost:5001/contact) page  
-or email: `support@example.com`
+📨 **Email:** mansihbhatkariya2@gmail.com  
+🔗 **LinkedIn:** [Yuvraj Bhatkariya](https://linkedin.com/in/yuvraj-bhatkariya-562048283)
 
 ---
 
